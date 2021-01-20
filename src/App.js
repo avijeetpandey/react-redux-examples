@@ -1,5 +1,5 @@
 import React from 'react'
-import { INCREMENT, DECREMENT } from './index'
+import { INCREMENT, DECREMENT, RESET } from './index'
 import { connect } from 'react-redux'
 import './styles.css'
 
@@ -15,14 +15,20 @@ const decrement = () => {
   }
 }
 
-const App = ({ count, increment, decrement }) => {
+const reset = () => {
+  return {
+    type: RESET,
+  }
+}
+
+const App = ({ count, increment, decrement, reset }) => {
   return (
     <main className="Counter">
       <p className="count">{count}</p>
       <section className="controls">
         <button onClick={increment}>Increment</button>
         <button onClick={decrement}>Decrement</button>
-        <button>Reset</button>
+        <button onClick={reset}>Reset</button>
       </section>
     </main>
   )
@@ -35,6 +41,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   increment,
   decrement,
+  reset,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

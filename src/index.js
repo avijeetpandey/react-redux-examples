@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 
 export const INCREMENT = 'INCREMENT'
 export const DECREMENT = 'DECREMENT'
+export const RESET = 'RESET'
 
 const initialState = {
   count: 0,
@@ -22,6 +23,10 @@ const reducer = (state = initialState, action) => {
     return {
       count: state.count - 1,
     }
+  }
+
+  if (action.type === RESET) {
+    return initialState
   }
   return state
 }

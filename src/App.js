@@ -1,5 +1,5 @@
 import React from 'react'
-import { INCREMENT } from './index'
+import { INCREMENT, DECREMENT } from './index'
 import { connect } from 'react-redux'
 import './styles.css'
 
@@ -9,15 +9,19 @@ const incrementValue = () => {
   }
 }
 
-const App = ({ count, increment }) => {
-  console.log(count)
-  console.log(increment)
+const decrementValue = () => {
+  return {
+    type: DECREMENT,
+  }
+}
+
+const App = ({ count, increment, decrement }) => {
   return (
     <main className="Counter">
-      <p className="count">0</p>
+      <p className="count">{count}</p>
       <section className="controls">
-        <button>Increment</button>
-        <button>Decrement</button>
+        <button onClick={increment}>Increment</button>
+        <button onClick={decrement}>Decrement</button>
         <button>Reset</button>
       </section>
     </main>
@@ -32,6 +36,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     increment() {
       dispatch(incrementValue())
+    },
+    decrement() {
+      dispatch(decrementValue())
     },
   }
 }

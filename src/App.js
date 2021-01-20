@@ -3,13 +3,13 @@ import { INCREMENT, DECREMENT } from './index'
 import { connect } from 'react-redux'
 import './styles.css'
 
-const incrementValue = () => {
+const increment = () => {
   return {
     type: INCREMENT,
   }
 }
 
-const decrementValue = () => {
+const decrement = () => {
   return {
     type: DECREMENT,
   }
@@ -32,15 +32,9 @@ const mapStateToProps = (state) => {
   return state
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    increment() {
-      dispatch(incrementValue())
-    },
-    decrement() {
-      dispatch(decrementValue())
-    },
-  }
+const mapDispatchToProps = {
+  increment,
+  decrement,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
